@@ -1,0 +1,42 @@
+[
+    {
+        "name": "AWS Certified DevOps Engineer – Professional",
+        "shortName": "AWS DevOps Pro",
+        "issuer": "Amazon Web Services",
+        "icon": "aws",
+        "credentialUrl": "",
+        "badgeColor": "#FF9900"
+    },
+    {
+        "name": "AWS Certified Machine Learning Engineer – Associate",
+        "shortName": "AWS ML Engineer",
+        "issuer": "Amazon Web Services",
+        "icon": "aws",
+        "credentialUrl": "",
+        "badgeColor": "#FF9900"
+    },
+    {
+        "name": "AWS Certified Developer – Associate",
+        "shortName": "AWS Developer",
+        "issuer": "Amazon Web Services",
+        "icon": "aws",
+        "credentialUrl": "",
+        "badgeColor": "#FF9900"
+    },
+    {
+        "name": "Google Cloud Certified – Associate Cloud Engineer",
+        "shortName": "GCP ACE",
+        "issuer": "Google Cloud",
+        "icon": "gcp",
+        "credentialUrl": "",
+        "badgeColor": "#4285F4"
+    },
+    {
+        "name": "Aviatrix Certified Engineer – Multi-Cloud Network Associate",
+        "shortName": "Aviatrix ACE",
+        "issuer": "Aviatrix",
+        "icon": "aviatrix",
+        "credentialUrl": "",
+        "badgeColor": "#F04E23"
+    }
+]

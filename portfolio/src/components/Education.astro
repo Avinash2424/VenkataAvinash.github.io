@@ -1,0 +1,61 @@
+---
+const education = [
+  {
+    school: "Texas Tech University",
+    location: "Lubbock, TX",  // University location
+    degree: "MS in Computer and Information Sciences",
+    gpa: "3.6",
+    graduation: "December 2023",
+    color: "accent-red",
+    highlights: [
+      "Project: Watermarking Large Language Models — collaborated on implementing watermarking techniques for language models.",
+      "Applied advanced concepts in machine learning and natural language processing to contribute to LM-Watermarking codebase.",
+      "Coursework in Intelligent Systems, Big Data, and advanced CS topics.",
+    ],
+  },
+  {
+    school: "Sathyabama University",
+    location: "Chennai, India",
+    degree: "BE in Computer Science",
+    gpa: "3.4",
+    graduation: "May 2019",
+    color: "accent-blue",
+    highlights: [],
+  },
+];
+---
+
+<section id="education" class="py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="mb-2 font-mono text-sm text-accent-green">$ cat /etc/education</h2>
+    <h3 class="mb-12 text-3xl font-bold text-white">Education</h3>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {education.map((edu) => (
+        <div class="rounded-lg border border-panel-border bg-panel-light p-6">
+          <div class="mb-3 flex items-center justify-between">
+            <span class={`rounded bg-panel px-2 py-0.5 font-mono text-xs text-${edu.color}`}>
+              {edu.graduation}
+            </span>
+            <span class="rounded bg-accent-green/10 px-2 py-0.5 font-mono text-xs text-accent-green">
+              GPA: {edu.gpa}
+            </span>
+          </div>
+          <h4 class="text-lg font-bold text-white">{edu.school}</h4>
+          <p class="text-xs text-gray-500">{edu.location}</p>
+          <p class={`mt-2 font-mono text-sm text-${edu.color}`}>{edu.degree}</p>
+          {edu.highlights.length > 0 && (
+            <ul class="mt-4 space-y-2">
+              {edu.highlights.map((h) => (
+                <li class="flex gap-2 text-sm text-gray-400">
+                  <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-panel-border"></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+import type { GitHubRepo } from "@/lib/github";
+
+interface Props {
+  repo: GitHubRepo;
+}
+
+const { repo } = Astro.props;
+const langColor = repo.primaryLanguage?.color ?? "#8b949e";
+const langName = repo.primaryLanguage?.name ?? "Unknown";
+const description = repo.description ?? "No description provided.";
+---
+
+<a
+  href={repo.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex flex-col rounded-lg border border-panel-border bg-panel-light p-5 transition-all hover:border-accent-green/50 hover:shadow-lg hover:shadow-accent-green/5"
+>
+  <div class="mb-3 flex items-center gap-2">
+    <svg class="h-4 w-4 text-gray-500" viewBox="0 0 16 16" fill="currentColor">
+      <path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1h-8a1 1 0 00-1 1v6.708A2.486 2.486 0 014.5 9h8V1.5zm-8 11h8v-1.5h-8a1 1 0 000 1.5z" />
+    </svg>
+    <span class="font-mono text-sm font-semibold text-accent-blue group-hover:text-accent-green">
+      {repo.name}
+    </span>
+    {repo.isFork && (
+      <span class="rounded bg-panel px-1.5 py-0.5 text-[10px] text-gray-500">fork</span>
+    )}
+  </div>
+
+  <p class="mb-4 flex-grow text-sm leading-relaxed text-gray-400">
+    {description.length > 120 ? description.slice(0, 120) + "…" : description}
+  </p>
+
+  <div class="flex items-center gap-4 text-xs text-gray-500">
+    <span class="flex items-center gap-1">
+      <span class="h-2.5 w-2.5 rounded-full" style={`background-color: ${langColor}`}></span>
+      {langName}
+    </span>
+    {repo.stargazerCount > 0 && (
+      <span class="flex items-center gap-1">
+        <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z" />
+        </svg>
+        {repo.stargazerCount}
+      </span>
+    )}
+    {repo.forkCount > 0 && (
+      <span class="flex items-center gap-1">
+        <svg class="h-3.5 w-3.5" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M5 3.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm0 2.122a2.25 2.25 0 10-1.5 0v.878A2.25 2.25 0 005.75 8.5h1.5v2.128a2.251 2.251 0 101.5 0V8.5h1.5a2.25 2.25 0 002.25-2.25v-.878a2.25 2.25 0 10-1.5 0v.878a.75.75 0 01-.75.75h-4.5A.75.75 0 015 6.25v-.878zm3.75 7.378a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm3-8.75a.75.75 0 100-1.5.75.75 0 000 1.5z" />
+        </svg>
+        {repo.forkCount}
+      </span>
+    )}
+  </div>
+
+  {repo.repositoryTopics.length > 0 && (
+    <div class="mt-3 flex flex-wrap gap-1.5">
+      {repo.repositoryTopics.slice(0, 4).map((topic) => (
+        <span class="rounded-full bg-accent-blue/10 px-2 py-0.5 text-[10px] text-accent-blue">
+          {topic}
+        </span>
+      ))}
+    </div>
+  )}
+</a>

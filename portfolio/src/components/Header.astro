@@ -1,0 +1,66 @@
+---
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Education", href: "#education" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Awards", href: "#awards" },
+  { label: "Contact", href: "#contact" },
+];
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 border-b border-panel-border bg-panel/80 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <a href="#" class="font-mono text-lg font-bold text-accent-green">
+      ~/venkata-avinash<span class="animate-pulse">_</span>
+    </a>
+    <ul class="hidden items-center gap-6 md:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="text-sm text-gray-400 transition-colors hover:text-accent-green"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="text-gray-400 md:hidden"
+      aria-label="Toggle menu"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="hidden border-t border-panel-border md:hidden">
+    <ul class="space-y-2 px-6 py-4">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block text-sm text-gray-400 transition-colors hover:text-accent-green"
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => menu?.classList.toggle("hidden"));
+  menu?.querySelectorAll("a").forEach((a) =>
+    a.addEventListener("click", () => menu?.classList.add("hidden"))
+  );
+</script>

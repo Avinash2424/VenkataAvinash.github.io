@@ -1,0 +1,43 @@
+---
+const awards = [
+  {
+    title: "Bronze Award for Stellar Performance in Cloud Deliverables",
+    org: "Cognizant Technology Solutions",
+    color: "accent-yellow",
+    icon: "trophy",
+  },
+  {
+    title: "Spot Award for Excellence in Work Contributions",
+    org: "Deloitte",
+    color: "accent-green",
+    icon: "star",
+  },
+];
+---
+
+<section id="awards" class="py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="mb-2 font-mono text-sm text-accent-green">$ cat awards.log</h2>
+    <h3 class="mb-12 text-3xl font-bold text-white">Awards</h3>
+
+    <div class="grid gap-4 md:grid-cols-2">
+      {awards.map((award) => (
+        <div class="flex items-start gap-4 rounded-lg border border-panel-border bg-panel-light p-5 transition-all hover:border-accent-green/40">
+          <div class={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-${award.color}/10`}>
+            <svg class={`h-6 w-6 text-${award.color}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {award.icon === "trophy" ? (
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3h14l-1.405 8.838A5 5 0 0112.766 16H11.234a5 5 0 01-4.829-4.162L5 3zM12 16v4m-4 0h8" />
+              ) : (
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              )}
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white">{award.title}</h4>
+            <p class={`mt-1 font-mono text-xs text-${award.color}`}>{award.org}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

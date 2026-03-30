@@ -1,0 +1,140 @@
+---
+const experiences = [
+  {
+    company: "Edward Jones",
+    role: "Site Reliability Engineer",
+    period: "July 2024 – Present",
+    location: "Dallas, TX",
+    color: "accent-green",
+    bullets: [
+      "Automated infrastructure provisioning and deployment pipelines using Jenkins and Terraform. Managed Kubernetes clusters and Python APIs on Azure AKS with integrated CI/CD workflows.",
+      "Developed and maintained monitoring, alerting, and logging systems using Splunk, Dynatrace, and Grafana, improving observability and reducing incident response times.",
+      "Led incident management, root cause analysis, and implemented reliability metrics (SLIs, SLOs, SLAs) to ensure system stability and availability.",
+      "Developed Python-based automations for generating dynamic SLOs for high-usage services, achieving 99.99% accuracy while maintaining system stability.",
+      "Created alerts, dashboards in Splunk, Dynatrace, and Grafana for analyzing performance, health, and errors.",
+      "Optimized performance and resource usage across Kubernetes and WebLogic-based applications using Azure Advisor and Azure Cost Management.",
+    ],
+  },
+  {
+    company: "Centene",
+    role: "Cloud Native Developer",
+    period: "January 2024 – July 2024",
+    location: "Dallas, TX",
+    color: "accent-blue",
+    bullets: [
+      "Orchestrated Kubernetes deployment on Amazon EKS using Jenkins CI/CD, emphasizing Terraform for scalable infrastructure provisioning.",
+      "Utilized Terraform to configure AWS Batch for daily execution of Spring Batch applications, reducing processing time by 30%.",
+      "Integrated Spring Batch applications with internal databases using Terraform, ensuring real-time data accuracy and minimizing discrepancies by 25%.",
+      "Designed and implemented microservice architecture for Spring APIs, promoting modularity, scalability, and maintainability.",
+      "Conducted performance testing, optimizing API response times by 20% through Terraform-managed configurations and AWS API Gateway integration.",
+    ],
+  },
+  {
+    company: "Deloitte",
+    role: "Cloud Native Developer",
+    period: "October 2021 – July 2022",
+    location: "Hyderabad, India",
+    color: "accent-purple",
+    bullets: [
+      "Developed APIGateway Python REST APIs for migration of On-Premises XML files to AWS S3, resulting in a 30% reduction in processing time.",
+      "Designed AWS Step Functions state-machine with multiple Lambda functions, achieving a 25% increase in conversion efficiency.",
+      "Utilized AWS Boto3 SDK for seamless interaction with AWS services, contributing to a 20% improvement in migration processes.",
+      "Established CI/CD pipelines with AWS CodePipeline and SAM, leading to a 50% reduction in deployment time.",
+    ],
+  },
+  {
+    company: "Accenture",
+    role: "Application Development Analyst",
+    period: "June 2021 – October 2021",
+    location: "Bangalore, India",
+    color: "accent-cyan",
+    bullets: [
+      "Orchestrated APIGateway Python REST APIs, empowering product owners to manage 40% more ETL tasks across AWS Glue, Azure Data Factory, and GCP Data Fusion.",
+      "Implemented CI/CD pipelines with AWS CodePipeline and SAM, reducing deployment times by 45%.",
+      "Engineered a unified notification system using AWS Boto3 SDK and SES, reducing response time by 40%.",
+      "Applied Factory design patterns in Python, simplifying code complexity by 20% across diverse cloud service providers.",
+    ],
+  },
+  {
+    company: "Cognizant Technology Solutions",
+    role: "Cloud Native Developer",
+    period: "June 2020 – June 2021",
+    location: "Chennai, India",
+    color: "accent-yellow",
+    bullets: [
+      "Reduced training license expenses by 99%, creating cost-effective hands-on labs without third-party providers.",
+      "Developed APIs for unified learning experiences, seamlessly authenticating employees across multiple cloud platforms.",
+      "Leveraged GCP Cloud Functions and Cloud Run for serverless automation and scalable deployment of training modules.",
+      "Streamlined API management with Cloud Gateway, providing secure and controlled access to training resources.",
+    ],
+  },
+  {
+    company: "Cognizant Technology Solutions",
+    role: "Cloud Native Developer – Trainee",
+    period: "May 2019 – June 2020",
+    location: "Chennai, India",
+    color: "accent-red",
+    bullets: [
+      "Developed AWS Config solution for real-time reporting of non-compliant resources, enhancing operational visibility.",
+      "Automated vulnerability detection using AWS Inspector and implemented Lambda scripts for automated patching, cutting operational workload by 40%.",
+      "Configured Jenkins pipelines and CI/CD processes, resulting in a 25% reduction in deployment time with zero downtime deployments.",
+      "Deployed applications on GCP Cloud Run and integrated Cloud Functions for seamless workflow automation.",
+    ],
+  },
+  {
+    company: "Cognizant Technology Solutions",
+    role: "Intern",
+    period: "January 2019 – April 2019",
+    location: "Chennai, India",
+    color: "accent-green",
+    bullets: [
+      "Developed Java and Spring Boot APIs, halving transaction processing times for improved efficiency.",
+      "Deployed Kubernetes-based API services on Amazon EKS using Jenkins CI/CD and Terraform, reducing manual workload by 80%.",
+      "Implemented robust Spring Batch applications, tripling batch capabilities and automating transaction status tracking.",
+    ],
+  },
+];
+---
+
+<section id="experience" class="py-24">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="mb-2 font-mono text-sm text-accent-green">$ cat experience.log</h2>
+    <h3 class="mb-12 text-3xl font-bold text-white">Work Experience</h3>
+
+    <!-- Vertical timeline -->
+    <div class="relative">
+      <!-- Timeline line -->
+      <div class="absolute left-4 top-0 h-full w-px bg-panel-border md:left-1/2"></div>
+
+      {experiences.map((exp, i) => (
+        <div class={`relative mb-12 flex flex-col md:flex-row ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}>
+          {/* Dot on timeline */}
+          <div class="absolute left-4 top-6 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-panel bg-accent-green md:left-1/2"></div>
+
+          {/* Spacer */}
+          <div class="hidden w-1/2 md:block"></div>
+
+          {/* Content card */}
+          <div class={`ml-10 w-full rounded-lg border border-panel-border bg-panel-light p-6 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:ml-8" : "md:mr-8"}`}>
+            <div class="mb-3 flex flex-wrap items-center gap-3">
+              <span class={`rounded bg-panel px-2 py-0.5 font-mono text-xs text-${exp.color}`}>
+                {exp.period}
+              </span>
+              <span class="text-xs text-gray-500">{exp.location}</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">{exp.role}</h4>
+            <p class={`mb-4 font-mono text-sm text-${exp.color}`}>{exp.company}</p>
+            <ul class="space-y-2">
+              {exp.bullets.map((bullet) => (
+                <li class="flex gap-2 text-sm text-gray-400">
+                  <span class="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-panel-border"></span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
