@@ -23,7 +23,7 @@
       </a>
 
       <a
-        href="https://www.linkedin.com/in/addagada-venkata-avinash-3829b8139"
+        href="https://www.linkedin.com/in/venkata-avinash-addagada-3829b8139"
         target="_blank"
         rel="noopener noreferrer"
         class="flex items-center gap-4 rounded-lg border border-panel-border bg-panel-light p-5 transition-all hover:border-accent-green/40"
@@ -70,5 +70,120 @@
       <span class="text-gray-600">|</span>
       <span class="text-sm text-gray-400">Tampa, FL</span>
     </div>
+
+    <!-- Contact Form (powered by Formspree) -->
+    <div class="mt-12 rounded-lg border border-panel-border bg-panel-light p-8">
+      <div class="mb-6 flex items-center gap-2">
+        <span class="h-3 w-3 rounded-full bg-accent-red"></span>
+        <span class="h-3 w-3 rounded-full bg-accent-yellow"></span>
+        <span class="h-3 w-3 rounded-full bg-accent-green"></span>
+        <span class="ml-4 font-mono text-xs text-gray-500">send-message.sh</span>
+      </div>
+
+      <form
+        action="https://formspree.io/f/xojpwlag"
+        method="POST"
+        id="contact-form"
+        class="space-y-5"
+      >
+        <div class="grid gap-5 md:grid-cols-2">
+          <div>
+            <label for="name" class="mb-1.5 block font-mono text-xs text-gray-500">name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              placeholder="Your Name"
+              class="w-full rounded-lg border border-panel-border bg-panel px-4 py-2.5 text-sm text-white placeholder-gray-600 transition-colors focus:border-accent-green focus:outline-none"
+            />
+          </div>
+          <div>
+            <label for="email" class="mb-1.5 block font-mono text-xs text-gray-500">email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder="you@example.com"
+              class="w-full rounded-lg border border-panel-border bg-panel px-4 py-2.5 text-sm text-white placeholder-gray-600 transition-colors focus:border-accent-green focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="subject" class="mb-1.5 block font-mono text-xs text-gray-500">subject</label>
+          <input
+            type="text"
+            id="subject"
+            name="_subject"
+            required
+            placeholder="What's this about?"
+            class="w-full rounded-lg border border-panel-border bg-panel px-4 py-2.5 text-sm text-white placeholder-gray-600 transition-colors focus:border-accent-green focus:outline-none"
+          />
+        </div>
+
+        <div>
+          <label for="message" class="mb-1.5 block font-mono text-xs text-gray-500">message</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            placeholder="Your message..."
+            class="w-full resize-none rounded-lg border border-panel-border bg-panel px-4 py-2.5 text-sm text-white placeholder-gray-600 transition-colors focus:border-accent-green focus:outline-none"
+          ></textarea>
+        </div>
+
+        <!-- Honeypot spam protection -->
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <button
+          type="submit"
+          class="inline-flex items-center gap-2 rounded-lg bg-accent-green px-6 py-2.5 font-mono text-sm font-semibold text-panel transition-all hover:bg-accent-green/90 focus:outline-none focus:ring-2 focus:ring-accent-green/50"
+        >
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+          Send Message
+        </button>
+      </form>
+
+      <!-- Success/Error messages -->
+      <div id="form-success" class="mt-4 hidden rounded-lg border border-accent-green/30 bg-accent-green/10 p-4">
+        <p class="font-mono text-sm text-accent-green">Message sent successfully! I'll get back to you soon.</p>
+      </div>
+      <div id="form-error" class="mt-4 hidden rounded-lg border border-accent-red/30 bg-accent-red/10 p-4">
+        <p class="font-mono text-sm text-accent-red">Something went wrong. Please try emailing me directly.</p>
+      </div>
+    </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const successEl = document.getElementById("form-success");
+  const errorEl = document.getElementById("form-error");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    successEl?.classList.add("hidden");
+    errorEl?.classList.add("hidden");
+
+    try {
+      const res = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        form.reset();
+        successEl?.classList.remove("hidden");
+      } else {
+        errorEl?.classList.remove("hidden");
+      }
+    } catch {
+      errorEl?.classList.remove("hidden");
+    }
+  });
+</script>
