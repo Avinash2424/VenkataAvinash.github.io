@@ -39,7 +39,7 @@ jobs:
         working-directory: portfolio
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME || 'Avinash2424' }}
+          GITHUB_USERNAME: ${{ vars.GITHUB_USERNAME || 'VenkataAvinash2' }}
         run: npm run build
 
       - name: Upload artifact

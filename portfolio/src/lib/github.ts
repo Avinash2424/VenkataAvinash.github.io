@@ -18,7 +18,7 @@ const GITHUB_TOKEN = import.meta.env.GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
 const GITHUB_USERNAME =
   import.meta.env.GITHUB_USERNAME ??
   process.env.GITHUB_USERNAME ??
-  "Avinash2424";
+  "VenkataAvinash2";
 
 const REPOS_QUERY = `
   query ($login: String!, $cursor: String) {
