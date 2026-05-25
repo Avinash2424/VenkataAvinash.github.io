@@ -2,34 +2,34 @@
 import certs from "@/data/certs.json";
 
 const topSkills = [
-  { name: "Ceph", color: "accent-green" },
+  { name: "Ceph / Rook", color: "accent-green" },
   { name: "Golang", color: "accent-cyan" },
   { name: "Python", color: "accent-blue" },
   { name: "Kubernetes", color: "accent-purple" },
   { name: "Terraform", color: "accent-yellow" },
-  { name: "OpenStack", color: "accent-red" },
+  { name: "Prometheus", color: "accent-red" },
 ];
 
 const recentExperience = [
   {
     company: "ABAB Solutions Inc.",
-    role: "Storage Infrastructure Operations & Automation Engineer",
+    role: "Site Reliability Engineer — Distributed Storage",
     period: "July 2024 — Present",
-    highlight: "Managing 11 Ceph clusters, 2,800+ OSDs at 99.99% availability",
+    highlight: "Own SLO compliance for 11 Ceph clusters (2,800+ OSDs). Built Go-based self-healing automation that eliminated 95% of on-call toil and held availability above 99.99%.",
     color: "accent-cyan",
   },
   {
     company: "Sharpwhiz Corp.",
-    role: "Cloud Native Developer",
+    role: "Infrastructure & Reliability Engineer",
     period: "Jan 2024 – June 2024",
-    highlight: "EKS deployments, Terraform automation, AWS Lambda workflows",
+    highlight: "Designed fault-tolerant EKS data pipelines with Terraform-managed AWS Batch; automated capacity scaling via Lambda to maintain sub-second job latency under peak load.",
     color: "accent-blue",
   },
   {
     company: "Deloitte",
-    role: "Cloud Native Developer",
+    role: "Cloud Platform Engineer",
     period: "Oct 2021 – July 2022",
-    highlight: "Python REST APIs, AWS Step Functions, S3 migrations (+20% efficiency)",
+    highlight: "Engineered serverless migration pipelines (Step Functions + Lambda) that moved petabytes to S3 with zero data loss and 20% faster throughput via Boto3 optimizations.",
     color: "accent-purple",
   },
 ];
@@ -82,8 +82,8 @@ const recentExperience = [
 
     <!-- Section: Core Skills -->
     <div class="mb-20">
-      <h2 class="mb-1 font-mono text-sm text-accent-green">$ echo $CORE_SKILLS</h2>
-      <h3 class="mb-8 text-2xl font-bold text-white">Core Expertise</h3>
+      <h2 class="mb-1 font-mono text-sm text-accent-green">$ echo $RELIABILITY_STACK</h2>
+      <h3 class="mb-8 text-2xl font-bold text-white">Reliability & Infrastructure</h3>
 
       <div class="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
         {topSkills.map((skill) => (
@@ -94,7 +94,7 @@ const recentExperience = [
       </div>
 
       <div class="mt-6 flex flex-wrap gap-2">
-        {["Rook-Ceph", "Helm", "AWS", "GCP", "Azure", "Jenkins", "Grafana", "Perses", "Prometheus", "Splunk", "Docker", "Spring Boot", "Bash"].map((skill) => (
+        {["OpenStack", "Helm", "AWS", "GCP", "Azure", "Jenkins", "Grafana", "Perses", "Splunk", "ELK", "SLI/SLO", "Incident Response", "Capacity Planning", "IaC"].map((skill) => (
           <span class="rounded-full border border-panel-border bg-panel px-3 py-1 text-xs text-gray-400">{skill}</span>
         ))}
       </div>
